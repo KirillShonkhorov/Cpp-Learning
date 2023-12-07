@@ -611,15 +611,71 @@ void IfElseConstruct_TernaryOperator(){
 
     int a {8};
     // a = true
-    if(a) std::cout << "a = true" << std::endl; 
-    else  std::cout << "a = false" << std::endl; 
+    if(a) cout << "a = true" << endl; 
+    else  cout << "a = false" << endl; 
      
     int b {};
     // b = false
-    if(b) std::cout << "b = true" << std::endl; 
-    else  std::cout << "b = false" << std::endl; 
+    if(b) cout << "b = true" << endl; 
+    else  cout << "b = false" << endl; 
+
+    //Вложенные конструкции////////////////////////////////////////////////////////////////////////////////////
+
+    if(a==5)
+    {
+        if(b==8)
+        { 
+            cout << "b == 8" << endl;
+        }
+        else
+        {
+            cout << "b != 8" << endl;
+        }
+        cout << "a == 5" << endl;
+    }
+    else
+    {
+        cout << "a != 5 " << endl;
+    }
+
+    //Блок if с инициализацией переменной/////////////////////////////////////////////////////////////////////
+
+    if(int c {a - b}; a > b)
+    {
+        cout << "a=" << a << "; c=" << c << endl;
+    }
+    else
+    {
+        cout << "b=" << b << "; c=" << c << endl;
+    }
+
+    //Тернарный оператор///////////////////////////////////////////////////////////////////////////////////
+
+    /*
+    Тернарный оператор в некотором роде похож на конструкцию if-else. Он принимает три операнда в следующем виде:
+	
+    операнд1? операнд2 : операнд3
+
+    Первый операнд представляет условие. Если это условие верно (равно true), тогда выбирается/выполняется второй операнд,
+    который помещается после символа ?. Если условие не верно, тогда выбирается/выполняется третий операнд, который помещается после двоеточия.
+    */
+
+    a = 5;
+    b  = 8;
+    int c = a > b ? a - b : a + b; // c = if(a > b) to
+                                   //     a - b
+                                   //else a + b
+ 
+    cout << "c = " << c << endl;  // c = 13
+
+    //В рамках одного тернарного оператора можно комбинировать несколько других. Например:
+
+    cout << (a < b ? "a is less than b" :
+        (a == b ? "a is equal to b" : "a is greater than b"));
+
     cout << endl;
-}
+   }
+
 int main()
 {
     //g++ -std=c++20 -Wall -pedantic Chapter_1.cpp -o chapter_1; ./chapter_1
@@ -633,7 +689,7 @@ int main()
     //StaticTypingAndTypeConversions(); //Статическая типизация и преобразования типов
     //AssignmentOperators(); // Операции присваивания
     //ConditionalExpressions(); // Условные выражения
-    //IfElseConstruct_TernaryOperator(); //Конструкция if-else и тернарный оператор
+    IfElseConstruct_TernaryOperator(); //Конструкция if-else и тернарный оператор
 
     return 0;
 } 
